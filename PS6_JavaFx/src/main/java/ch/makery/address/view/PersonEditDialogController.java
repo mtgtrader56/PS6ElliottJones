@@ -154,6 +154,7 @@ public class PersonEditDialogController {
 
         if (cityField.getText() == null || cityField.getText().length() == 0) {
             errorMessage += "No valid city!\n"; 
+            //test
         }
 
         if (birthdayField.getText() == null || birthdayField.getText().length() == 0) {
