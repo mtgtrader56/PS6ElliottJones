@@ -164,7 +164,7 @@ public class PersonEditDialogController {
             }
         }
         
-        if (errorMessage.length() == 0) {
+        if (errorMessage.length() == 0) { 
             return true;
         } else {
             // Show the error message.
