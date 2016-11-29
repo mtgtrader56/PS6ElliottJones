@@ -20,7 +20,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Person_Test {
-		
+	
 	private static PersonDomainModel person1;
 	private static UUID person1UUID = UUID.randomUUID();			
 	
@@ -28,6 +28,7 @@ public class Person_Test {
 	public static void personInstance() throws Exception{
 		
 		Date person1Birth = null;
+
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -50,7 +51,33 @@ public class Person_Test {
 		person1.setPostalCode(21921);
 		
 	}
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+	@Before
+	public void setUp() throws Exception {
+	}
+
+
+	@After
+	public void tearDown() throws Exception {
+	}
+	
+	@Test 
+	public void testaddperson() {
+		PersonDAL.addPerson(person1);
+	}
+	@Test
+	public void testupdateperson() {
+		PersonDAL.updatePerson(person1);
+	}
+	@Test
+	public void testdeleteperson() {
+		PersonDAL.deletePerson(person1UUID);
+	}
 	
 	
+	
+
 
 }

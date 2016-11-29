@@ -117,6 +117,7 @@ public class PersonOverviewController {
         	
         	UUID perID = selectedPerson.getPersonID();
         	System.out.println("Try to delete: " + perID.toString());
+        	PersonDAL.deletePerson(selectedPerson.getPersonID());
         	
         	//TODO: Delete the person, call the deletePerson(perID) method
         	//		in the DAL
@@ -145,8 +146,8 @@ public class PersonOverviewController {
         Person tempPerson = new Person();
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
-        	//PS6 - Calling the addPerson method
         	PersonDomainModel per = new PersonDomainModel();
+        	PersonDAL.addPerson(per);
         	per.setPersonID(tempPerson.getPersonID());
         	per.setFirstName(tempPerson.getFirstName());
         	per.setMiddleName(tempPerson.getMiddleName());
@@ -155,7 +156,8 @@ public class PersonOverviewController {
         	per.setStreet(tempPerson.getStreet());
         	per.setPostalCode(tempPerson.getPostalCode());
         	per.setBirthday(tempPerson.getBirthday());
-        	
+        	PersonDAL.deletePerson(tempPerson.getPersonID());
+        	PersonDAL.addPerson(per);
         	//TODO: Delete the person, call the addPerson(perID) method
         	//		in the DAL
         	        	
@@ -174,8 +176,8 @@ public class PersonOverviewController {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
             	
-            	//PS6 - Calling the updatePerson method
-            	PersonDomainModel updatePer = new PersonDomainModel();            	
+            	PersonDomainModel updatePer = new PersonDomainModel(); 
+            	PersonDAL.updatePerson(updatePer);
             	updatePer.setPersonID(selectedPerson.getPersonID());
             	updatePer.setFirstName(selectedPerson.getFirstName());
             	updatePer.setMiddleName(selectedPerson.getMiddleName());
@@ -187,9 +189,7 @@ public class PersonOverviewController {
             	
 
             	
-            	//TODO: Delete the person, call the updatePerson(perID) method
-            	//		in the DAL
-            	
+            	PersonDAL.deletePerson(selectedPerson.getPersonID());
             	
                 showPersonDetails(selectedPerson);
                 mainApp.RefreshPersonTable();
